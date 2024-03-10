@@ -1,4 +1,5 @@
-CC = c++ -Wall -Werror -Wextra -std=c++98
+CFLAGS = -Wall -Werror -Wextra -std=c++98
+CC = c++
 
 SRCS = megaphone.cpp
 
