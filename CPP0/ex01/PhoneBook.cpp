@@ -1,5 +1,5 @@
 #include "PhoneBook.hpp"
 
 PhoneBook::PhoneBook(){
-	this->index = 0;
+	this->isFull = false;
 }

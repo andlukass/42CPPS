@@ -7,7 +7,7 @@ class PhoneBook {
 
 	public:
 		Contact contacts[8];
-		int index;
+		int isFull;
 
 		PhoneBook();
 };
