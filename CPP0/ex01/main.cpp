@@ -46,7 +46,9 @@ int getIndex(void){
 		if (!std::isdigit(input[i]))
 			return -1;
 	}
-	return (std::stoi(input));
+	if (input.length() > 1)
+		return -1;
+	return (input[0] - '0');
 }
 
 void searchContact(PhoneBook *phonebook, int index){
