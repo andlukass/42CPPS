@@ -11,5 +11,5 @@ int main( void ){
 
 	randomChump("cleber");
 
-	z2->~Zombie();
+	delete z2;
 }
