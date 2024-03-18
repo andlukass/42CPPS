@@ -13,21 +13,3 @@ int main( void ){
 
 	z2->~Zombie();
 }
-
-/*
-Zombie teste(){
-	Zombie test = Zombie("rogerio");
-	return test;
-}
-int main(){
-	Zombie z1 = teste();
-	z1.announce();
-}
-
-diff:
-	Zombie test = Zombie("rogerio");
-	Zombie test2 = &test;
-
-	Zombie teste = new Zombie("anastacio");
-
-*/
