@@ -1,5 +1,5 @@
-CFLAGS = -Wall -Werror -Wextra #-std=c++98
-CC = g++-11
+CFLAGS = -Wall -Werror -Wextra -std=c++98
+CC = c++
 
 SRCS = main.cpp         \
 		Weapon.cpp       \
