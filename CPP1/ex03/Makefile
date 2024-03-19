@@ -10,7 +10,7 @@ OBJS = $(SRCS:.cpp=.o)
 
 NAME = humans
 
-all = $(NAME)
+all: $(NAME)
 
 $(NAME): $(SRCS)
 	$(CC) $(CFLAGS) -o $@ $^

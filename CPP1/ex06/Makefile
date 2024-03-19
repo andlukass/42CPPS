@@ -8,7 +8,7 @@ OBJS = $(SRCS:.cpp=.o)
 
 NAME = harlFilter
 
-all = $(NAME)
+all: $(NAME)
 
 $(NAME): $(SRCS)
 	$(CC) $(CFLAGS) -o $@ $^

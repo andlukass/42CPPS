@@ -7,7 +7,7 @@ OBJS = $(SRCS:.cpp=.o)
 
 NAME = replacer
 
-all = $(NAME)
+all: $(NAME)
 
 $(NAME): $(SRCS)
 	$(CC) $(CFLAGS) -o $@ $^
