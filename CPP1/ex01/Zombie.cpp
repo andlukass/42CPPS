@@ -1,5 +1,6 @@
 #include "Zombie.hpp"
 #include <iostream>
+#include <sstream> 
 
 void Zombie::announce( void ) {
 	std::cout << this->_name << ": BraiiiiiiinnnzzzZ..." << std::endl;
@@ -23,9 +24,13 @@ Zombie::~Zombie( void ) {
 
 Zombie* zombieHorde( int N, std::string name ) {
 	Zombie *horde = new Zombie[N];
+	std::stringstream i_string;
 	int i = -1;
-	while ( ++i < N )
-		horde[i].setName(name + std::to_string(i));
+	while ( ++i < N ){
+		i_string.str("");
+		i_string << i;
+		horde[i].setName(name + i_string.str());
+	}
 	return horde;
 }
 
