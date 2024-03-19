@@ -27,7 +27,7 @@ std::string replacer(std::string input, std::string to_find, std::string to_repl
 	while (i != std::string::npos)
 	{
 		replaced += to_replace;
-		i = input.find(to_find, i + 1);
+		i = input.find(to_find);
 		replaced += input.substr(0, i);
 		input.erase(0, i + to_find.length());
 	}
@@ -35,7 +35,7 @@ std::string replacer(std::string input, std::string to_find, std::string to_repl
 }
 
 int saveToFile(std::string str, std::string fileName){
-	std::ofstream file(fileName);
+	std::ofstream file(fileName.c_str());
 	if (!file)
 		return 0;
 	file << str;
