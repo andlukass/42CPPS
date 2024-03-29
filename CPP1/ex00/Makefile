@@ -10,7 +10,7 @@ OBJS = $(SRCS:.cpp=.o)
 
 NAME = zombie
 
-all = $(NAME)
+all: $(NAME)
 
 $(NAME): $(SRCS)
 	$(CC) $(CFLAGS) -o $@ $^

@@ -1,11 +1,12 @@
 CFLAGS = -Wall -Werror -Wextra -std=c++98
 CC = c++
 
-SRCS = megaphone.cpp
+SRCS = main.cpp         \
+		Harl.cpp        \
 
 OBJS = $(SRCS:.cpp=.o)
 
-NAME = megaphone
+NAME = harl
 
 all: $(NAME)
 
