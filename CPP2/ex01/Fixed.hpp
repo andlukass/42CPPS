@@ -23,7 +23,7 @@ class Fixed {
 		float toFloat( void ) const ;
 };
 
-	std::ostream & operator << (std::ostream &out, Fixed const &number);
+	std::ostream &operator << (std::ostream &out, Fixed const &number);
 
 
 #endif

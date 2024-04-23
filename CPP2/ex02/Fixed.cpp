@@ -30,7 +30,7 @@ Fixed::~Fixed() {
 
 Fixed::Fixed( const Fixed &toCopy ) {
 	// std::cout << "Copy constructor called" << std::endl;
-	this->_raw = toCopy.getRawBits();
+	*this = toCopy;
 }
 
 Fixed& Fixed::operator=(const Fixed &toCopy) {
@@ -54,23 +54,19 @@ std::ostream & operator << ( std::ostream &out, Fixed const &number ) {
 }
 
 Fixed Fixed::operator*( Fixed const &number ) {
-	Fixed o(this->toFloat() * number.toFloat());
-	return o;
+	return Fixed (this->toFloat() * number.toFloat());
 }
 
 Fixed Fixed::operator/( Fixed const &number ) {
-	Fixed o(this->toFloat() / number.toFloat());
-	return o;
+	return Fixed (this->toFloat() / number.toFloat());
 }
 
 Fixed Fixed::operator+( Fixed const &number ) {
-	Fixed o(this->toFloat() + number.toFloat());
-	return o;
+	return Fixed (this->toFloat() + number.toFloat());
 }
 
 Fixed Fixed::operator-( Fixed const &number ) {
-	Fixed o(this->toFloat() - number.toFloat());
-	return o;
+	return Fixed (this->toFloat() - number.toFloat());
 }
 
 Fixed& Fixed::operator++( void ) {
@@ -96,49 +92,49 @@ Fixed Fixed::operator--( int ) {
 }
 
 bool Fixed::operator==( Fixed const &number ) {
-	return (this->toFloat() == number.toFloat());
+	return (this->getRawBits() == number.getRawBits());
 }
 
 bool Fixed::operator!=( Fixed const &number ) {
-	return (this->toFloat() != number.toFloat());
+	return (this->getRawBits() != number.getRawBits());
 }
 
 bool Fixed::operator<=( Fixed const &number ) {
-	return (this->toFloat() <= number.toFloat());
+	return (this->getRawBits() <= number.getRawBits());
 }
 
 bool Fixed::operator>=( Fixed const &number ) {
-	return (this->toFloat() >= number.toFloat());
+	return (this->getRawBits() >= number.getRawBits());
 }
 
 bool Fixed::operator<( Fixed const &number ) {
-	return (this->toFloat() < number.toFloat());
+	return (this->getRawBits() < number.getRawBits());
 }
 
 bool Fixed::operator>( Fixed const &number ) {
-	return (this->toFloat() > number.toFloat());
+	return (this->getRawBits() > number.getRawBits());
 }
 
 const Fixed& Fixed::min(Fixed const &number1, Fixed const &number2) {
-	if (number1.toFloat() < number2.toFloat())
+	if (number1.getRawBits() < number2.getRawBits())
 		return number1;
 	return number2;
 }
 
 Fixed& Fixed::min(Fixed &number1, Fixed &number2) {
-	if (number1.toFloat() < number2.toFloat())
+	if (number1.getRawBits() < number2.getRawBits())
 		return number1;
 	return number2;
 }
 
 const Fixed& Fixed::max(Fixed const &number1, Fixed const &number2) {
-	if (number1.toFloat() > number2.toFloat())
+	if (number1.getRawBits() > number2.getRawBits())
 		return number1;
 	return number2;
 }
 
 Fixed& Fixed::max(Fixed &number1, Fixed &number2) {
-	if (number1.toFloat() > number2.toFloat())
+	if (number1.getRawBits() > number2.getRawBits())
 		return number1;
 	return number2;
 }
