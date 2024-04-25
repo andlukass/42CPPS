@@ -14,6 +14,9 @@ $(NAME): $(SRCS)
 	$(CC) $(CFLAGS) -o $@ $^
 
 clean:
+	@echo "no objects to clean..."
+
+fclean:
 	rm -f $(NAME)
 
-re: clean all
+re: fclean all
