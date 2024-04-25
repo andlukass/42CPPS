@@ -72,8 +72,8 @@ bool bsp( Point const a, Point const b, Point const c, Point const point ) {
 	Fixed pointArea = tempArea1 + tempArea2 + tempArea3;
 	Fixed triangleArea = calculateArea(a, b, c);
 
-	std::cout << "area of point: " << pointArea << std::endl;
-	std::cout << "area of triangle: " << triangleArea << std::endl;
+	// std::cout << "area of point: " << pointArea << std::endl;
+	// std::cout << "area of triangle: " << triangleArea << std::endl;
 	if (tempArea1 == 0 || tempArea2 == 0 || tempArea3 == 0)
 		return false;
 	if (!isEqual(pointArea, triangleArea))
