@@ -14,31 +14,20 @@ int main()
 {
 	print_div("CONSTRUCTORS");
 
-	const Animal* cat = new Cat();
+	const Cat* cat = new Cat();
 	const Animal* dog = new Dog();
-	const Animal* animal = new Animal();
-
-	const WrongAnimal* wrongCat = new WrongCat();
 
 	print_div("ACTIONS");
 
 	std::cout << cat->getType() << std::endl;
 	std::cout << dog->getType() << std::endl;
-	std::cout << animal->getType() << std::endl;
 
-	std::cout << wrongCat->getType() << std::endl;
-
-	cat->makeSound();
+	cat->getBrain()->getIdea(0);
 	dog->makeSound();
-	animal->makeSound();
-
-	wrongCat->makeSound();
 
 	print_div("DESTRUCTORS");
 	delete cat;
 	delete dog;
-	delete animal;
-	delete wrongCat;
 
 	return 0;
 }
