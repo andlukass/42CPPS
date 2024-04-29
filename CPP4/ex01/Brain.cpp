@@ -20,6 +20,8 @@ Brain::Brain( const Brain &toCopy ) {
 }
 
 Brain& Brain::operator=( const Brain &toCopy ) {
+	if (this == &toCopy)
+		return (*this);
 	for (int i = 0; i < 100; i++) {
 		this->ideas[i] = toCopy.ideas[i];
 	}
@@ -32,3 +34,8 @@ std::string Brain::getIdea(int index) const {
 	return (this->ideas[index]);
 }
 
+void Brain::setIdea(int index, std::string idea) {
+	if (index < 0 || index > 99)
+		return ;
+	this->ideas[index] = idea;
+}

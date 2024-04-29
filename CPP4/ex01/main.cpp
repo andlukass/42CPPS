@@ -12,22 +12,37 @@ void print_div(const char *message) {
 
 int main()
 {
-	print_div("CONSTRUCTORS");
+	/*PRINCIAPL TESTS*/
+	{
+		print_div("CONSTRUCTORS");
 
-	const Cat* cat = new Cat();
-	const Animal* dog = new Dog();
+		const Animal* dog = new Dog();
+		const Animal* cat = new Cat();
 
-	print_div("ACTIONS");
+		print_div("DESTRUCTORS");
+		delete dog;
+		delete cat;
+	}
 
-	std::cout << cat->getType() << std::endl;
-	std::cout << dog->getType() << std::endl;
 
-	cat->getBrain()->getIdea(0);
-	dog->makeSound();
+	/*COPIES TESTS*/
+	// {
+	// 	print_div("CONSTRUCTORS");
+	// 	Cat cat;
+	// 	Cat cat2;
 
-	print_div("DESTRUCTORS");
-	delete cat;
-	delete dog;
+	// 	print_div("ACTIONS");
+	// 	std::cout << "cat idea before copy:" << std::endl;
+	// 	std::cout << cat.getBrain()->getIdea(1) << std::endl;
+
+	// 	cat2 = cat;
+	// 	std::cout << "\nafter copy:" << std::endl;
+	// 	cat.getBrain()->setIdea(1,"kjdslkadnfsjdnflkdas");
+	// 	std::cout << cat.getBrain()->getIdea(1) << std::endl;
+	// 	std::cout << cat2.getBrain()->getIdea(1) << std::endl;
+
+	// 	print_div("DESTRUCTORS");
+	// }
 
 	return 0;
 }

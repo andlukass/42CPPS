@@ -4,16 +4,18 @@
 #include <iostream>
 
 class Brain {
-	protected:
+	private:
 		std::string ideas[100];
 
 	public:
 		Brain();
-		virtual ~Brain();
+		~Brain();
 		Brain( std::string idea );
 		Brain( const Brain &toCopy );
 		Brain& operator=( const Brain &toCopy );
 
 		std::string getIdea(int index) const ;
+		void setIdea(int index, std::string idea) ;
+
 
 };

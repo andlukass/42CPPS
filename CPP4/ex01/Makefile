@@ -7,6 +7,7 @@ SRCS = main.cpp         \
 		Cat.cpp           \
 		WrongCat.cpp      \
 		WrongAnimal.cpp   \
+		Brain.cpp         \
 
 NAME = animal
 

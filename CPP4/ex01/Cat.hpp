@@ -12,10 +12,11 @@ class Cat : public Animal{
 
 	public:
 		Cat();
+		Cat(const Cat& toCopy);
+		Cat& operator=(const Cat& toCopy);
 		~Cat();
 
 		Brain* getBrain() const ;
 		void makeSound() const ;
-
 
 };

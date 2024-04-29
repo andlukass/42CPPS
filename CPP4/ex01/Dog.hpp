@@ -12,8 +12,11 @@ class Dog : public Animal{
 
 	public:
 		Dog();
+		Dog(const Dog& toCopy);
+		Dog& operator=(const Dog& toCopy);
 		~Dog() ;
 
+		Brain* getBrain() const ;
 		void makeSound() const ;
 
 };
