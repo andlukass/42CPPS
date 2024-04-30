@@ -5,7 +5,7 @@ SRCS = main.cpp         \
 		AMateria.cpp      \
 		Ice.cpp           \
 		Character.cpp     \
-
+		MateriaSource.cpp \
 
 NAME = rpg
 

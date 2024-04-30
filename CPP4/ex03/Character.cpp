@@ -1,33 +1,24 @@
 #include "Character.hpp"
 
-Character::Character() : _index(0) {
+Character::Character() {
+	int index = 0;
+	while (index < 4) {
+		this->_materias[index++] = NULL;
+	}
 }
 
 Character::~Character() {
 }
 
-Character::Character( std::string const & name ) : _name(name), _index(0) {
+Character::Character( std::string const & name ) : _name(name) {
+	int index = 0;
+	while (index < 4) {
+		this->_materias[index++] = NULL;
+	}
 }
 
 Character::Character( const Character &src ) {
 	*this = src;
-}
-
-void Character::equip( AMateria* m ) {
-	if (this->_index > 3) {
-		std::cout << "dont have space to equip" << std::endl;
-		return ;
-	}
-	this->_materias[this->_index] = m;
-	this->_index++;
-}
-
-void Character::use(int idx, ICharacter& target) {
-	if (!this->_index) {
-		std::cout << "dont know any materias" << std::endl;
-		return ;
-	}
-	this->_materias[idx]->use(target);
 }
 
 Character& Character::operator=( const Character &src ) {
@@ -36,6 +27,36 @@ Character& Character::operator=( const Character &src ) {
 	}
 	this->_name = src._name;
 	return *this;
+}
+
+void Character::equip( AMateria* m ) {
+	int index = 0;
+	while (index < 4) {
+		if (!this->_materias[index]){
+			this->_materias[index] = m;
+			std::cout << "equiped with " << m->getType() << std::endl;
+			return;
+		}
+		index++;
+	}
+	std::cout << "dont have enough space" << std::endl;
+}
+
+void Character::unequip(int idx) {
+	if (!this->_materias[idx]) {
+		std::cout << "nothing in the slot" << std::endl;
+		return ;
+	}
+	std::cout << "unequiped " << this->_materias[idx]->getType() << std::endl;
+	this->_materias[idx] = NULL;
+}
+
+void Character::use(int idx, ICharacter& target) {
+	if (!this->_materias[idx]) {
+		std::cout << "dont know any materias" << std::endl;
+		return ;
+	}
+	this->_materias[idx]->use(target);
 }
 
 std::string const &Character::getName() const {
