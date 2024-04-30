@@ -8,11 +8,9 @@ MateriaSource::MateriaSource() {
 }
 
 MateriaSource::~MateriaSource() {
-	int index = 0;
-	while (index < 4) {
-		if (this->_materias[index])
-			delete this->_materias[index];
-		index++;
+	for (int i = 0; i < 4; i++) {
+		if (this->_materias[i])
+			delete this->_materias[i];
 	}
 }
 

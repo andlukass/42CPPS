@@ -3,9 +3,6 @@
 #include "MateriaSource.hpp"
 
 
-// void teste(int* kk){
-// 	delete kk;
-// }
 int main(){
 	IMateriaSource* src = new MateriaSource();
 	src->learnMateria(new Ice());

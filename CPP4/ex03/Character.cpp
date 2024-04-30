@@ -8,12 +8,12 @@ Character::Character() {
 }
 
 Character::~Character() {
+
 }
 
 Character::Character( std::string const & name ) : _name(name) {
-	int index = 0;
-	while (index < 4) {
-		this->_materias[index++] = NULL;
+	for (int i = 0; i < 4; i++) {
+		this->_materias[i] = NULL;
 	}
 }
 
@@ -30,14 +30,12 @@ Character& Character::operator=( const Character &src ) {
 }
 
 void Character::equip( AMateria* m ) {
-	int index = 0;
-	while (index < 4) {
-		if (!this->_materias[index]){
-			this->_materias[index] = m;
+	for (int i = 0; i < 4; i++) {
+		if (!this->_materias[i]){
+			this->_materias[i] = m;
 			std::cout << "equiped with " << m->getType() << std::endl;
 			return;
 		}
-		index++;
 	}
 	std::cout << "dont have enough space" << std::endl;
 }
