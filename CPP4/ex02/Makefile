@@ -9,17 +9,25 @@ SRCS = main.cpp         \
 		WrongAnimal.cpp   \
 		Brain.cpp         \
 
+OBJS = $(patsubst %.cpp,.objs/%.o,$(SRCS))
+
 NAME = animal
 
 all: $(NAME)
 
-$(NAME): $(SRCS)
-	$(CC) $(CFLAGS) -o $@ $^
+.objs/%.o:%.cpp
+	mkdir -p $(@D)
+	$(CC) $(CFLAGS) -c $< -o $@
+# '<': right side
+# '@': left side
+
+$(NAME): $(OBJS)
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJS)
 
 clean:
-	@echo "no objects to clean..."
+	rm -rf .objs
 
-fclean:
+fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
