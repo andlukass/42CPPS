@@ -7,17 +7,25 @@ SRCS = main.cpp         \
 		Character.cpp     \
 		MateriaSource.cpp \
 
+OBJS = $(patsubst %.cpp,.objs/%.o,$(SRCS))
+
 NAME = rpg
 
 all: $(NAME)
 
-$(NAME): $(SRCS)
-	$(CC) $(CFLAGS) -o $(NAME) $(SRCS)
+.objs/%.o:%.cpp
+	mkdir -p $(@D)
+	$(CC) $(CFLAGS) -c $< -o $@
+# '<': right side
+# '@': left side
+
+$(NAME): $(OBJS)
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJS)
 
 clean:
-	@echo "no objects to clean..."
+	rm -rf .objs
 
-fclean:
+fclean: clean
 	rm -f $(NAME)
 
 re: fclean all

@@ -1,9 +1,8 @@
 #include "MateriaSource.hpp"
 
 MateriaSource::MateriaSource() {
-	int index = 0;
-	while (index < 4) {
-		this->_materias[index++] = NULL;
+	for (int i = 0; i < 4; i++) {
+		this->_materias[i] = NULL;
 	}
 }
 
@@ -11,16 +10,25 @@ MateriaSource::~MateriaSource() {
 	for (int i = 0; i < 4; i++) {
 		if (this->_materias[i])
 			delete this->_materias[i];
+		this->_materias[i] = NULL;
 	}
 }
 
 MateriaSource::MateriaSource( const MateriaSource &src ) {
+	for (int i = 0; i < 4; i++) {
+		this->_materias[i] = NULL;
+	}
 	*this = src;
 }
 
 MateriaSource& MateriaSource::operator=( const MateriaSource &src ) {
 	if (&src == this) {
 		return *this;
+	}
+	this->~MateriaSource();
+	for (int i = 0; i < 4; i++) {
+		if (src._materias[i])
+			this->_materias[i] = src._materias[i]->clone();
 	}
 	return *this;
 }
@@ -43,8 +51,7 @@ AMateria* MateriaSource::createMateria(std::string const & type) {
 	while (index < 4) {
 		if (this->_materias[index] && this->_materias[index]->getType() == type) {
 			std::cout << "creating:  " << type << std::endl;
-			AMateria *newM = this->_materias[index];
-			return newM;
+			return this->_materias[index]->clone();
 		}
 		index++;
 	}
