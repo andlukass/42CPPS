@@ -13,7 +13,7 @@ Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name) {
 	if (grade > GRADE_MIN) {
 		throw Bureaucrat::GradeTooHighException();
 	}
-
+	this->_grade = grade;
 }
 Bureaucrat::Bureaucrat( const Bureaucrat &toCopy ) {
 	*this = toCopy;
@@ -49,10 +49,15 @@ void Bureaucrat::decrement() {
 	this->_grade++;
 }
 
-const char* Bureaucrat::GradeTooHighException::what() const throw() {
+const char* Bureaucrat::GradeTooHighException::what() const _NOEXCEPT {
 	return "Grade must be a number greater than 1";
 }
 
-const char* Bureaucrat::GradeTooLowException::what() const throw() {
+const char* Bureaucrat::GradeTooLowException::what() const _NOEXCEPT {
 	return "Grade must be a number lower than 150";
 };
+
+std::ostream& operator<<(std::ostream &out, Bureaucrat &b) {
+	out << b.getName() << ", bureaucrat grade " << b.getGrade() << ".";
+	return out;
+}

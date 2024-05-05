@@ -28,10 +28,12 @@ class Bureaucrat {
 		void decrement();
 
 		class GradeTooHighException : public std::exception {
-			public: const char* what() const throw() ;
+			public: const char* what() const _NOEXCEPT ;
 		};
 		class GradeTooLowException : public std::exception {
-			public: const char* what() const throw() ;
+			public: const char* what() const _NOEXCEPT ;
 		};
 
 };
+
+ std::ostream& operator<<(std::ostream &out, Bureaucrat &b);
