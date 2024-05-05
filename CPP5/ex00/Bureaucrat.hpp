@@ -2,7 +2,7 @@
 
 #include <string>
 #include <iostream>
-#include <exception>
+#include "Exceptions.hpp"
 
 class Bureaucrat {
 	protected:
@@ -10,6 +10,9 @@ class Bureaucrat {
 		int _grade;
 
 	public:
+
+		GradeTooLowException lowException;
+		GradeTooHighException highException;
 
 		enum {
 			GRADE_MAX = 1,
@@ -26,13 +29,6 @@ class Bureaucrat {
 		int getGrade() const ;
 		void increment();
 		void decrement();
-
-		class GradeTooHighException : public std::exception {
-			public: const char* what() const _NOEXCEPT ;
-		};
-		class GradeTooLowException : public std::exception {
-			public: const char* what() const _NOEXCEPT ;
-		};
 
 };
 

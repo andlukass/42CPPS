@@ -1,8 +1,12 @@
 CFLAGS = -Wall -Werror -Wextra -std=c++98
 CC = c++
 
-SRCS = main.cpp         \
+HEADERS = Bureaucrat.hpp    \
+		Exceptions.hpp      \
+
+SRCS = main.cpp           \
 		Bureaucrat.cpp    \
+		Exceptions.cpp    \
 
 OBJS = $(patsubst %.cpp,.objs/%.o,$(SRCS))
 
@@ -16,7 +20,7 @@ all: $(NAME)
 # '<': right side
 # '@': left side
 
-$(NAME): $(OBJS)
+$(NAME): $(OBJS) $(HEADERS)
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJS)
 
 clean:
