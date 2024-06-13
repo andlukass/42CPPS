@@ -2,6 +2,7 @@
 
 #include <string>
 #include <iostream>
+#include "Form.hpp"
 #include "Exceptions.hpp"
 
 class Bureaucrat {
@@ -29,6 +30,7 @@ class Bureaucrat {
 		int getGrade() const ;
 		void increment();
 		void decrement();
+		void signForm(Form& f);
 
 };
 
