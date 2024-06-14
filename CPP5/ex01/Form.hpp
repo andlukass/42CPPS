@@ -2,8 +2,9 @@
 
 #include <string>
 #include <iostream>
-#include "Exceptions.hpp"
 #include "Bureaucrat.hpp"
+
+class Bureaucrat;
 
 class Form {
 	private:
@@ -12,15 +13,14 @@ class Form {
 		const int _toSign;
 		bool _isSigned;
 
-	public:
-
-		GradeTooLowException lowException;
-		GradeTooHighException highException;
-
-		enum {
-			GRADE_MAX = 1,
-			GRADE_MIN = 150
+		class GradeTooLowException : public std::exception{
+				const char *what() const throw();
 		};
+		class GradeTooHighException : public std::exception{
+				const char *what() const throw();
+		};
+
+	public:
 
 		Form();
 		~Form();
@@ -33,8 +33,7 @@ class Form {
 		int getToExecute() const ;
 		int getToSign() const ;
 
-		void beSigned(Bureaucrat& b) ;
-		
+		void beSigned( Bureaucrat& b );
 
 };
 

@@ -1,33 +1,33 @@
 #include "Form.hpp"
 
 Form::Form() : 
+		_name("default"),
 		_toExecute(150),
-		_isSigned(false),
 		_toSign(150),
-		_name("..."){
+		_isSigned(false){
 }
 
 Form::~Form() {
 }
 
 Form::Form(std::string name, int _toExecute, int _toSign) : 
+							_name(name),
 							_toExecute(_toExecute),
-							_isSigned(false),
 							_toSign(_toSign),
-							_name(_name) {
+							_isSigned(false) {
 	if (_toExecute < GRADE_MAX || _toSign  < GRADE_MAX) {
-		throw this->lowException;
+		throw Form::GradeTooHighException();
 	}
-	if (_toExecute < GRADE_MIN || _toSign  < GRADE_MIN) {
-		throw this->highException;
+	if (_toExecute > GRADE_MIN || _toSign  > GRADE_MIN) {
+		throw Form::GradeTooLowException();
 	}
 }
 
 Form::Form( const Form &toCopy ) : 
+				_name(toCopy._name),
 				_toExecute(toCopy._toExecute),
-				_isSigned(toCopy._isSigned),
 				_toSign(toCopy._toSign),
-				_name(toCopy._name) {
+				_isSigned(toCopy._isSigned) {
 }
 
 Form& Form::operator=( const Form &toCopy ) {
@@ -51,27 +51,30 @@ int Form::getToSign() const {
 }
 
 int Form::getSignedStatus() const {
-	return this->_toSign;
+	return this->_isSigned;
 }
 
-void Form::beSigned(Bureaucrat& b) {
+void Form::beSigned( Bureaucrat& b ) {
 	if (b.getGrade() > this->_toSign) {
-		std::cout << b.getName() << " couldn't sign " <<
-		this->_name << " because the grade is too low." << std::endl;
-		throw this->lowException;
+		throw Form::GradeTooLowException();
 	}
 	this->_isSigned = true;
-	std::cout << b.getName() << " signed " << this->_name << std::endl;
+}
+
+const char* Form::GradeTooLowException::what() const throw() {
+	return "grade is too low";
+}
+
+const char* Form::GradeTooHighException::what() const throw() {
+	return "grade is too high";
 }
 
 std::ostream& operator<<(std::ostream &out, Form &b) {
-	std::string status;
-	status = "Is signed.";
-	if (!b.getSignedStatus()) {
-		status = "Is not signed.";
-	}
+	std::string status = b.getSignedStatus() ? 
+		"signed." : "not signed.";
+
 	out << b.getName() << " Form.  " << b.getToExecute() << 
 	" needed to execute. " << b.getToSign() << 
-	" needed to sign. " << status ;
+	" needed to sign. " << "Currently " << status ;
 	return out;
 }

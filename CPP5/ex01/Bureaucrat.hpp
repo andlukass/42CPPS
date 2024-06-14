@@ -2,24 +2,30 @@
 
 #include <string>
 #include <iostream>
+#include <exception>
+
 #include "Form.hpp"
-#include "Exceptions.hpp"
+
+enum {
+	GRADE_MAX = 1,
+	GRADE_MIN = 150
+};
+
+class Form;
 
 class Bureaucrat {
 	private:
-		std::string _name;
+		const std::string _name;
 		int _grade;
 
-	public:
-
-		GradeTooLowException lowException;
-		GradeTooHighException highException;
-
-		enum {
-			GRADE_MAX = 1,
-			GRADE_MIN = 150
+		class GradeTooLowException : public std::exception{
+				const char *what() const throw();
+		};
+		class GradeTooHighException : public std::exception{
+				const char *what() const throw();
 		};
 
+	public:
 		Bureaucrat();
 		~Bureaucrat();
 		Bureaucrat(std::string name, int grade);
@@ -30,7 +36,8 @@ class Bureaucrat {
 		int getGrade() const ;
 		void increment();
 		void decrement();
-		void signForm(Form& f);
+
+		void signForm( Form &form );
 
 };
 
