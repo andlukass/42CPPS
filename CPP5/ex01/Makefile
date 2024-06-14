@@ -1,11 +1,11 @@
 CFLAGS = -Wall -Werror -Wextra -std=c++98
 CC = c++
 
-HEADERS = Bureaucrat.hpp    
+HEADERS = Bureaucrat.hpp Form.hpp
 
 SRCS = main.cpp           \
 		Bureaucrat.cpp    \
-		Form.cpp    \
+		Form.cpp          \
 
 OBJS = $(patsubst %.cpp,.objs/%.o,$(SRCS))
 
