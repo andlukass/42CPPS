@@ -5,7 +5,7 @@ int main()
 {
 	std::cout << "\n[ GOOD EXAMPLE ]" << std::endl;
 	try {
-		Bureaucrat a("ping", 150);
+		Bureaucrat a("ping", 1);
 		std::cout << "At creation: " << a << std::endl;
 
 		a.decrement();
@@ -15,7 +15,7 @@ int main()
 		std::cout << "After increment: " << a << std::endl;
 
 	} catch (std::exception &e) {
-		std::cout << "EXCEPTION: " << e.what() << std::endl;
+		std::cout << "exception: " << e.what() << std::endl;
 	}
 
 
