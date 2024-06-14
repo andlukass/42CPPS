@@ -2,28 +2,29 @@
 
 #include <string>
 #include <iostream>
-#include "Exceptions.hpp"
 #include "Bureaucrat.hpp"
+
+class Bureaucrat;
 
 class AForm {
 	private:
-		const std::string _name = 0;
+		bool isExecutable( int grade ) const ;
+		const std::string _name;
 		const int _toExecute;
 		const int _toSign;
 		bool _isSigned;
 
-	public:
-
-		GradeTooLowException lowException;
-		GradeTooHighException highException;
-
-		enum {
-			GRADE_MAX = 1,
-			GRADE_MIN = 150
+		class GradeTooLowException : public std::exception{
+				const char *what() const throw();
+		};
+		class GradeTooHighException : public std::exception{
+				const char *what() const throw();
 		};
 
+	public:
+
 		AForm();
-		~AForm();
+		virtual ~AForm() = 0;
 		AForm(std::string name, int _toExecute, int _toSign);
 		AForm( const AForm &toCopy );
 		AForm& operator=( const AForm &toCopy );
@@ -33,8 +34,8 @@ class AForm {
 		int getToExecute() const ;
 		int getToSign() const ;
 
-		void beSigned(Bureaucrat& b) ;
-		
+		void beSigned( Bureaucrat& b );
+		virtual void execute(Bureaucrat const & executor) const = 0;
 
 };
 

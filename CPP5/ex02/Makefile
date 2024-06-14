@@ -1,12 +1,12 @@
 CFLAGS = -Wall -Werror -Wextra -std=c++98
 CC = c++
 
-HEADERS = Bureaucrat.hpp    \
-		Exceptions.hpp      \
+HEADERS = Bureaucrat.hpp AForm.hpp RobotomyRequestForm.hpp
 
-SRCS = main.cpp           \
-		Bureaucrat.cpp    \
-		Exceptions.cpp    \
+SRCS = main.cpp                   \
+		Bureaucrat.cpp            \
+		AForm.cpp                 \
+		RobotomyRequestForm.cpp   \
 
 OBJS = $(patsubst %.cpp,.objs/%.o,$(SRCS))
 
