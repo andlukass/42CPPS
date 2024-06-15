@@ -1,12 +1,18 @@
 CFLAGS = -Wall -Werror -Wextra -std=c++98
 CC = c++
 
-HEADERS = Bureaucrat.hpp AForm.hpp RobotomyRequestForm.hpp
+HEADERS = Bureaucrat.hpp                 \
+			AForm.hpp                    \
+			RobotomyRequestForm.hpp      \
+			ShrubberyCreationForm.hpp    \
+			PresidentialPardonForm.hpp   \
 
-SRCS = main.cpp                   \
-		Bureaucrat.cpp            \
-		AForm.cpp                 \
-		RobotomyRequestForm.cpp   \
+SRCS = main.cpp                          \
+		Bureaucrat.cpp                   \
+		AForm.cpp                        \
+		RobotomyRequestForm.cpp          \
+		ShrubberyCreationForm.cpp        \
+		PresidentialPardonForm.cpp       \
 
 OBJS = $(patsubst %.cpp,.objs/%.o,$(SRCS))
 
@@ -27,6 +33,7 @@ clean:
 	rm -rf .objs
 
 fclean: clean
+	rm -f *bery
 	rm -f $(NAME)
 
 re: fclean all

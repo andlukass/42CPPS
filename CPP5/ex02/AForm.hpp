@@ -8,20 +8,21 @@ class Bureaucrat;
 
 class AForm {
 	private:
-		bool isExecutable( int grade ) const ;
 		const std::string _name;
 		const int _toExecute;
 		const int _toSign;
 		bool _isSigned;
 
+	public:
 		class GradeTooLowException : public std::exception{
 				const char *what() const throw();
 		};
 		class GradeTooHighException : public std::exception{
 				const char *what() const throw();
 		};
-
-	public:
+		class NotSignedException : public std::exception{
+				const char *what() const throw();
+		};
 
 		AForm();
 		virtual ~AForm() = 0;

@@ -38,13 +38,6 @@ AForm& AForm::operator=( const AForm &toCopy ) {
 	return *this;
 }
 
-bool AForm::isExecutable(int grade) const {
-	if (this->_isSigned && grade >= this->_toExecute) {
-		return true;
-	}
-	return false;
-}
-
 std::string AForm::getName() const {
 	return this->_name;
 }
@@ -75,12 +68,15 @@ const char* AForm::GradeTooLowException::what() const throw() {
 const char* AForm::GradeTooHighException::what() const throw() {
 	return "grade is too high";
 }
+const char* AForm::NotSignedException::what() const throw() {
+	return "form is not signed";
+}
 
 std::ostream& operator<<(std::ostream &out, AForm &b) {
 	std::string status = b.getSignedStatus() ? 
 		"signed." : "not signed.";
 
-	out << b.getName() << " AForm.  " << b.getToExecute() << 
+	out << b.getName() << ".  " << b.getToExecute() << 
 	" needed to execute. " << b.getToSign() << 
 	" needed to sign. " << "Currently " << status ;
 	return out;

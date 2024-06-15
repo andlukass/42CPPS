@@ -37,7 +37,8 @@ class Bureaucrat {
 		void increment();
 		void decrement();
 
-		void signAForm( AForm &Aform );
+		void signForm( AForm &Aform );
+		void executeForm( AForm &Aform );
 
 };
 
