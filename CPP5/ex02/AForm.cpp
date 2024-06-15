@@ -76,7 +76,7 @@ std::ostream& operator<<(std::ostream &out, AForm &b) {
 	std::string status = b.getSignedStatus() ? 
 		"signed." : "not signed.";
 
-	out << b.getName() << ".  " << b.getToExecute() << 
+	out << b.getName() << " form.  " << b.getToExecute() << 
 	" needed to execute. " << b.getToSign() << 
 	" needed to sign. " << "Currently " << status ;
 	return out;

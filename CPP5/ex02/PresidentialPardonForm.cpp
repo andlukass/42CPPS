@@ -1,17 +1,17 @@
 #include "PresidentialPardonForm.hpp"
 
 PresidentialPardonForm::PresidentialPardonForm() : 
-			AForm("PresidentialPardonForm", 5, 25) {
+			AForm("Presidential Pardon", 5, 25) {
 	this->_target = "default";
 }
 
 PresidentialPardonForm::PresidentialPardonForm( std::string target ) : 
-			AForm("PresidentialPardonForm", 5, 25) {
+			AForm("Presidential Pardon", 5, 25) {
 	this->_target = target;
 }
 
 PresidentialPardonForm::PresidentialPardonForm( PresidentialPardonForm &toCopy ) :
-			AForm("PresidentialPardonForm", 5, 25) {
+			AForm("Presidential Pardon", 5, 25) {
 	*this = toCopy;
 }
 
