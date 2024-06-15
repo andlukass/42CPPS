@@ -11,6 +11,7 @@ int main()
 		AForm *f;
 
 		f = i.makeForm("robotomy request", "Robert J. Jr.");
+		if (!f) return 1;
 		b.signForm(*f);
 		b.executeForm(*f);
 		delete f;
@@ -21,7 +22,7 @@ int main()
 		AForm *f;
 		Intern i;
 
-		f = i.makeForm("robotomdy request", "Robert J. Jr.");
+		f = i.makeForm(":)", "Robert J. Jr.");
 	}
 
 	return 0;
