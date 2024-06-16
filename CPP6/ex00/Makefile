@@ -8,7 +8,7 @@ SRCS = main.cpp                        \
 
 OBJS = $(patsubst %.cpp,.objs/%.o,$(SRCS))
 
-NAME = bureaucrat
+NAME = convert
 
 all: $(NAME)
 
