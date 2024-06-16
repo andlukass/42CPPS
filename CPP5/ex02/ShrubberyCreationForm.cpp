@@ -39,7 +39,7 @@ void ShrubberyCreationForm::execute(Bureaucrat const & executor) const {
 		" *****    *****    *****\n"
 		"*******  *******  *******\n"
 		"  |||      |||      |||\n";
-	std::ofstream file(this->_target + "_shrubbery");
+	std::ofstream file((this->_target + "_shrubbery").c_str());
 	file << tree << std::endl;
 	file.close();
 }
