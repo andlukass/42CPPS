@@ -17,13 +17,14 @@ ScalarConverter& ScalarConverter::operator=( const ScalarConverter& toCopy ) {
 
 static void print_char( double nbr ){
 	std::cout << "char: ";
+
 	if (nbr < std::numeric_limits<char>::min() ||
 			nbr > std::numeric_limits<char>::max() || std::isnan(nbr)) {
 		std::cout << "impossible";
 	} else if (nbr < 32 || nbr > 126) {
 		std::cout << "Non displayable";
 	} else {
-		std::cout << (char)nbr;
+		std::cout << "'" << static_cast<char>(nbr) << "'";
 	}
 	std::cout << std::endl;
 }
@@ -34,17 +35,20 @@ static void print_int( double nbr ){
 			nbr > std::numeric_limits<int>::max() || std::isnan(nbr)) {
 		std::cout << "impossible";
 	} else {
-		std::cout << (int)nbr;
+		std::cout << static_cast<int>(nbr);
 	}
 	std::cout << std::endl;
 }
 
 static void print_float( double nbr ){
-	std::cout << std::fixed << std::setprecision(1) << "float: ";
+	std::cout << "float: ";
 	if (nbr > std::numeric_limits<float>::max()) {
 		std::cout << "+";
 	}
-	std::cout << (float)nbr;
+	std::cout << static_cast<float>(nbr);
+	if (nbr == static_cast<int>(nbr)) {
+		std::cout << ".0";
+	}
 	std::cout << "f" << std::endl;
 }
 
@@ -54,6 +58,9 @@ static void print_double( double nbr ){
 		std::cout << "+";
 	}
 	std::cout << nbr;
+	if (nbr == static_cast<int>(nbr)) {
+		std::cout << ".0";
+	}
 	std::cout << std::endl;
 }
 
@@ -67,7 +74,12 @@ static double stringToDouble(const std::string& str) {
 }
 
 void ScalarConverter::convert( std::string literal ) {
-	double value = stringToDouble(literal);
+	double value;
+
+	value = static_cast<double>(literal[0]);
+	if (literal.size() != 1) {
+		value = stringToDouble(literal);
+	}
 	print_char(value);
 	print_int(value);
 	print_float(value);
