@@ -4,24 +4,26 @@ int main () {
 
 	{
 		std::cout << "\n[ RANDOM GENERATE EXAMPLE ]" << std::endl;
-		Base* baseClass = generate();
-		identify(baseClass);
+		Base* b = generate();
+
+		identify(b);
+
+		delete b;
+
 		std::cout << std::endl;
 	}
 
 	{
-		// std::cout << "\n[ IDENTIFY EXAMPLE ]" << std::endl;
-		// A a;
-		// B b;
-		// C c;
+		std::cout << "\n[ IDENTIFY EXAMPLE ]" << std::endl;
 
-		// identify(a);
-		// identify(&a);
+		A a;
+		B b;
+		C c;
 
-		// identify(b);
-		// identify(&b);
+		identify(a);
+		identify(b);
+		identify(c);
 
-		// identify(c);
-		// identify(&c);
+		std::cout << std::endl;
 	}
 }
