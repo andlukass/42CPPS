@@ -2,6 +2,13 @@
 
 #include <iostream>
 
+/*
+void func(char c, std::string s){
+	std::cout << "char: " << c << std::endl;
+	std::cout << "str: " << s << std::endl;
+}
+*/
+
 int main () {
 	uintptr_t toNumber;
 	Data data;
@@ -22,5 +29,16 @@ int main () {
 	std::cout << newData->b << "\t-\t" << data.b << std::endl;
 	std::cout << newData->c << "\t-\t" << data.c << std::endl;
 	std::cout << std::endl;
+
+
+/*
+	std::string strPtr = "a";
+	char *charPtr = reinterpret_cast<char *>(&strPtr);
+	std::cout << "char address: " << reinterpret_cast<void *>(charPtr) << std::endl;
+	std::cout << "strg address: " << &strPtr << std::endl;
+
+	func(charPtr[16], strPtr);
+	// func(strPtr, charPtr[16]);
+*/
 
 }
