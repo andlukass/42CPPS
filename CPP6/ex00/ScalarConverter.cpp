@@ -41,14 +41,11 @@ static void print_int( double nbr ){
 }
 
 static void print_float( double nbr ){
-	std::cout << "float: ";
+	std::cout << "float: " << std::fixed << std::setprecision(1);
 	if (nbr > std::numeric_limits<float>::max()) {
 		std::cout << "+";
 	}
 	std::cout << static_cast<float>(nbr);
-	if (nbr == static_cast<int>(nbr)) {
-		std::cout << ".0";
-	}
 	std::cout << "f" << std::endl;
 }
 
@@ -58,14 +55,14 @@ static void print_double( double nbr ){
 		std::cout << "+";
 	}
 	std::cout << nbr;
-	if (nbr == static_cast<int>(nbr)) {
-		std::cout << ".0";
-	}
 	std::cout << std::endl;
 }
 
-static double stringToDouble(const std::string& str) {
+static double stringToDouble( std::string& str ) {
 	char *endptr;
+	if (!str.empty() && str[str.size() - 1] == 'f') {
+		str.resize(str.size() - 1);
+	}
 	double value = std::strtod(str.c_str(), &endptr);
 	if (*endptr != '\0') {
 		return NAN;

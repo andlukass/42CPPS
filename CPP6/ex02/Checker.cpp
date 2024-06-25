@@ -19,7 +19,6 @@ Base *generate(void) {
 }
 
 void identify(Base* p) {
-	std::cout << "aqui" << std::endl;
 	if (!p) {
 		std::cout << MESSAGE + "unknown." << std::endl;
 		return ;
