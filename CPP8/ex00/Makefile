@@ -1,7 +1,7 @@
-CFLAGS = -Wall -Werror -Wextra -std=c++98
+CFLAGS = -I./includes -Wall -Werror -Wextra -std=c++98
 CC = c++
 
-HEADERS = easyfind.hpp                 \
+HEADERS = includes/easyfind.hpp                 \
 
 SRCS = main.cpp                        \
 
@@ -11,7 +11,7 @@ NAME = easyfind
 
 all: $(NAME)
 
-.objs/%.o:%.cpp
+.objs/%.o:srcs/%.cpp
 	mkdir -p $(@D)
 	$(CC) $(CFLAGS) -c $< -o $@
 # '<': right side
@@ -24,7 +24,6 @@ clean:
 	rm -rf .objs
 
 fclean: clean
-	rm -f *bery
 	rm -f $(NAME)
 
 re: fclean all

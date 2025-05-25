@@ -1,4 +1,4 @@
-#include "easyfind.hpp"
+#include <easyfind.hpp>
 #include <vector>
 
 int main () {
