@@ -2,6 +2,9 @@
 
 #include <stdexcept>
 
+#include <cstdlib>
+#include <ctime>
+
 template <typename T>
 class Array {
     private:

@@ -1,4 +1,4 @@
-#include "iter.hpp"
+#include <iter.hpp>
 
 void sumElement(int& a) {
     a++;
@@ -12,14 +12,14 @@ int main () {
         a[i] = i;
     }
     for (int i = 0; i < 10; i++){
-        b[i] = i + 97;
+        b[i] = i + 'a';
     }
 
-	std::cout << "\n[ INT EXAMPLE ]" << std::endl;
+    std::cout << "\n[ INT EXAMPLE ]" << std::endl;
     iter(a, 10, sumElement);
     iter(a, 10, printElement<int>);
 
-	std::cout << "\n[ CHAR EXAMPLE ]" << std::endl;
+    std::cout << "\n[ CHAR EXAMPLE ]" << std::endl;
     iter(b, 10, printElement<char>);
 
     delete []a;
