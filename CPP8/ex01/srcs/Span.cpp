@@ -16,6 +16,8 @@ Span::Span( const Span& toCopy ) {
 }
 
 Span& Span::operator=( const Span& toCopy ) {
+	if (this == &toCopy)
+		return *this;
 	_N = toCopy._N;
 	_vec.clear();
 	_vec.reserve(_N);
