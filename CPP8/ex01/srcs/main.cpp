@@ -4,6 +4,8 @@
 const int SIZE = 10000;
 
 int main() {
+    try {
+
     Span sp = Span(5);
     sp.addNumber(6);
     sp.addNumber(3);
@@ -22,9 +24,12 @@ int main() {
         vec.push_back(i);
 
     Span sp2 = Span(SIZE);
-    sp2.addNumber(vec.begin(), vec.end());
+    sp2.addNumbers(vec.begin(), vec.end());
     std::cout << sp2.shortestSpan() << std::endl;
     std::cout << sp2.longestSpan() << std::endl;
 
+    } catch (std::exception &e) {
+        std::cout << "Some error occured..." << std::endl;
+    }
     return 0;
 }

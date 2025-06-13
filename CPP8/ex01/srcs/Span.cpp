@@ -27,19 +27,19 @@ Span& Span::operator=( const Span& toCopy ) {
 
 void Span::addNumber(int number) {
 	if (_vec.size() >= _N)
-		throw std::overflow_error("Span is full");
+		throw std::exception();
 	_vec.push_back(number);
 }
 
-void Span::addNumber(std::vector<int>::iterator begin, std::vector<int>::iterator end) {
+void Span::addNumbers(std::vector<int>::iterator begin, std::vector<int>::iterator end) {
 	if (_vec.size() + std::distance(begin, end) > _N)
-		throw std::overflow_error("Span is full");
+		throw std::exception();
 	_vec.insert(_vec.end(), begin, end);
 }
 
 int Span::shortestSpan() {
 	if (_vec.size() < 2)
-		throw std::length_error("Span is too short");
+		throw std::exception();
 	std::vector<int> sortedVec = _vec;
 	std::sort(sortedVec.begin(), sortedVec.end());
 	int shortest = sortedVec[1] - sortedVec[0];
@@ -52,6 +52,6 @@ int Span::shortestSpan() {
 
 int Span::longestSpan() {
 	if (_vec.size() < 2)
-		throw std::length_error("Span is too short");
+		throw std::exception();
 	return *std::max_element(_vec.begin(), _vec.end()) - *std::min_element(_vec.begin(), _vec.end());
 }
