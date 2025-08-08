@@ -32,5 +32,5 @@ template <typename Container> class PmergeMe {
 
     void printTimeTaken() const;
     void printContainer() const;
-    Container fordJohnsonSimple();
+    void fordJohnson();
 };

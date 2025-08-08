@@ -112,19 +112,16 @@ template <typename Container> void PmergeMe<Container>::printContainer() const {
     std::cout << std::endl;
 }
 
-template <typename Container>
-Container PmergeMe<Container>::fordJohnsonSimple() {
-    std::vector<std::pair<typename Container::value_type,
-                          typename Container::value_type> >
-        pairs;
+template <typename Container> void PmergeMe<Container>::fordJohnson() {
+    std::vector<std::pair<int, int> > pairs;
     Container mainChain;
     Container pending;
     clock_t start = clock();
 
     // 1. make the pairs
     for (size_t i = 0; i + 1 < this->_data.size(); i += 2) {
-        typename Container::value_type a = this->_data[i];
-        typename Container::value_type b = this->_data[i + 1];
+        int a = this->_data[i];
+        int b = this->_data[i + 1];
         if (a > b)
             pairs.push_back(std::make_pair(a, b));
         else
@@ -152,8 +149,6 @@ Container PmergeMe<Container>::fordJohnsonSimple() {
 
     clock_t end = clock();
     this->_timeTaken = (double)(end - start) / CLOCKS_PER_SEC;
-
-    return mainChain;
 }
 
 // Explicit template instantiations for common containers
