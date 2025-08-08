@@ -1,23 +1,21 @@
 #include <RPN.hpp>
 #include <iostream>
 
-RPN::RPN(const std::string& expression) {
+RPN::RPN(const std::string &expression) {
     this->_expression = expression;
     this->_isCalculated = false;
 }
 
-RPN::~RPN() {
-    this->clearStacks();
-}
+RPN::~RPN() { this->clearStacks(); }
 
-RPN::RPN( const RPN& toCopy ) {
+RPN::RPN(const RPN &toCopy) {
     this->clearStacks();
     this->_expression = toCopy._expression;
     this->_numbers = toCopy._numbers;
     this->_operators = toCopy._operators;
 }
 
-RPN& RPN::operator=( const RPN& toCopy ) {
+RPN &RPN::operator=(const RPN &toCopy) {
     if (this == &toCopy)
         return *this;
     this->clearStacks();
@@ -37,27 +35,28 @@ void RPN::applyOperator(char op) {
     int b = this->_numbers.top();
     this->_numbers.pop();
     if (b == 0 && op == '/') {
-        throw std::invalid_argument("Division by zero: " + std::to_string(b) + " / " + std::to_string(a));
+        throw std::invalid_argument("Division by zero: " + std::to_string(b) +
+                                    " / " + std::to_string(a));
     }
     switch (op) {
-        case '+':
-            this->_numbers.push(a + b);
-            break;
-        case '-':
-            this->_numbers.push(b - a); 
-            break;
-        case '*':
-            this->_numbers.push(a * b);
-            break;
-        case '/':
-            this->_numbers.push(b / a);
-            break;
+    case '+':
+        this->_numbers.push(a + b);
+        break;
+    case '-':
+        this->_numbers.push(b - a);
+        break;
+    case '*':
+        this->_numbers.push(a * b);
+        break;
+    case '/':
+        this->_numbers.push(b / a);
+        break;
     }
     this->_operators.pop();
 }
 
-static int strToInt(const std::string& token) {
-    std::istringstream iss(token);
+static int strToInt(const std::string &token) {
+    std::stringstream iss(token);
     int number;
     iss >> number;
 

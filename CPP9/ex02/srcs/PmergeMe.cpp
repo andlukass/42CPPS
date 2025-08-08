@@ -10,7 +10,7 @@ void PmergeMe<Container>::binaryInsert(
 
 template <typename Container>
 void PmergeMe<Container>::parseAndStore(const std::string &numbers) {
-    std::istringstream input(numbers);
+    std::stringstream input(numbers);
     std::string token;
     _data.clear();
 
@@ -31,7 +31,7 @@ void PmergeMe<Container>::parseAndStore(const std::string &numbers) {
         // convert and range-check
         long long value = 0;
         {
-            std::istringstream conv(token);
+            std::stringstream conv(token);
             conv >> value;
             if (conv.fail())
                 throw std::invalid_argument("Error: invalid token");
@@ -67,17 +67,20 @@ std::string PmergeMe<Container>::getTypeName() const {
 
 template <typename Container>
 PmergeMe<Container>::PmergeMe(const std::string &numbers,
-                              const bool &shortDisplay)
-    : _shortDisplay(shortDisplay), _timeTaken(-1), _data() {
+                              const bool &shortDisplay) {
+    this->_shortDisplay = shortDisplay;
+    this->_timeTaken = -1;
     parseAndStore(numbers);
 }
 
 template <typename Container> PmergeMe<Container>::~PmergeMe() {}
 
 template <typename Container>
-PmergeMe<Container>::PmergeMe(const PmergeMe &toCopy)
-    : _shortDisplay(toCopy._shortDisplay), _timeTaken(toCopy._timeTaken),
-      _data(toCopy._data) {}
+PmergeMe<Container>::PmergeMe(const PmergeMe &toCopy) {
+    this->_shortDisplay = toCopy._shortDisplay;
+    this->_timeTaken = toCopy._timeTaken;
+    this->_data = toCopy._data;
+}
 
 template <typename Container>
 PmergeMe<Container> &PmergeMe<Container>::operator=(const PmergeMe &toCopy) {

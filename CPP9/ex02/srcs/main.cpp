@@ -12,7 +12,7 @@ static void printErrorMessage(char *argv[]) {
 static std::pair<std::string, bool> processArguments(int argc, char *argv[]) {
     bool shortDisplay = true;
 
-    std::ostringstream oss;
+    std::stringstream oss;
     for (int i = 1; i < argc; ++i) {
         if (std::string(argv[i]) == "-a") {
             shortDisplay = false;
